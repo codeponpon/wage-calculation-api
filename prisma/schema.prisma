@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
+model Users {
   id                String             @id @default(uuid())
   email             String             @unique
   firstName         String
@@ -34,7 +34,7 @@ model PositionsOnUsers {
   positionId String
   position   Positions @relation(fields: [positionId], references: [id])
   userId     String
-  user       User      @relation(fields: [userId], references: [id])
+  user       Users     @relation(fields: [userId], references: [id])
 
   @@id([positionId, userId])
 }
@@ -45,11 +45,11 @@ model UserInformations {
   signedOffDate DateTime?
   promotedDate  DateTime
   salary        Decimal
-  user          User[]
+  user          Users[]
 }
 
 model Wallet {
   id      String  @id @default(uuid())
   balance Decimal @default(0.00)
-  user    User?
+  user    Users?
 }

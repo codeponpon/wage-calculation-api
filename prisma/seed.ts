@@ -57,7 +57,7 @@ const main = async () => {
     userInformation,
     wallet,
   } = user();
-  const userRecord = await prisma.user.upsert({
+  const userRecord = await prisma.users.upsert({
     where: { email },
     update: {},
     create: {
