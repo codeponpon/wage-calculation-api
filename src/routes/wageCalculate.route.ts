@@ -16,7 +16,7 @@ router.post(
     const user = await getUserById(userId);
     // Check existing user in the database
     if (!user) {
-      throw new Error("User Not Found!!");
+      throw new Error(`User Not Found!! ${userId}`);
     }
 
     // Call controller function for calculate and update data into database

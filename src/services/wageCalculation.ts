@@ -15,6 +15,11 @@ export const wageCalculation = async ({
     throw new Error("User's wallet not found");
   }
 
+  const isValidType = ["daily", "monthly"].includes(workingType);
+  if (!isValidType) {
+    throw new Error("Work type is incorrect!!");
+  }
+
   let wage;
   // Calculate the wage for daily type
   if (workingType == "daily") {
